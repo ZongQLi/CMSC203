@@ -1,0 +1,93 @@
+/**
+ * Class: CMSC203 
+ * Instructor: Grigoriy Grinberg 
+ * Description: Provide tips to user to diagnosis problem with the user's internet connectivity
+ * Due: 6/19/2022
+ * Platform/compiler: Eclipse Java IDE SE 18
+ * I pledge that I have completed the programming assignment independently.
+   I have not copied the code from a student or any source.
+   I have not given my code to any student.
+   Print your Name here: Zong Qiang Li
+*/
+
+// For the use of the scanner class to retrive user input
+import java.util.Scanner;
+
+// For the user of the "throws IOException" clause
+import java.io.*;
+
+public class WiFiDiagnosis{
+    public static void main(String[] args) throws IOException{
+    	
+    	// Declare variable to hold user input as String
+    	Scanner keyboard = new Scanner(System.in);
+    	String input;
+    	
+    	// Display introduction about the purpose of the program
+    	System.out.println("If you have a problem with internet connectivity, this WiFi Diagnosis might work.");
+    	
+    	// Ask user and retrieve input - Should be "yes" or "no"
+    	System.out.println("First step: reboot your computer.");
+    	System.out.println("Are you able to connect with the internet? (yes or no)");
+    	input = keyboard.nextLine();
+    	
+    	/* The input provided by the user will determine the which statements will provide
+    	 * If "yes", the conditional statement that is deemed true by the input will execute and
+    	 * proceed to the next step 
+    	 */
+    	if (input.equalsIgnoreCase("yes")) { // I used the equalsIgnoreCase() method so user input won't be case-sensitive
+    		System.out.println("Rebooting your computer seemed to work.");
+    	}
+    	else if (input.equalsIgnoreCase("no")) {
+    		System.out.println("Second step: reboot your router.");
+    		// If the user enters "no", proceed to next possible solution
+    		System.out.println("Are you able to connect with the internet? (yes or no)");
+    		input = keyboard.nextLine();
+    		
+    		if (input.equalsIgnoreCase("yes")) {
+        		System.out.println("Rebooting your router seemed to work.");
+        	}
+        	else if (input.equalsIgnoreCase("no")) {
+        		System.out.println("Third step: make sure the cables to your router are"
+        				+ " plugged in firmly and your router is getting power");
+        		
+        		System.out.println("Are you able to connect with the internet? (yes or no)");
+            	input = keyboard.nextLine();
+            	
+            	if (input.equalsIgnoreCase("yes")) {
+            		System.out.println("Checking the router's cables seemed to work.");
+            	}
+            	else if (input.equalsIgnoreCase("no")) {
+            		System.out.println("Fourth step: move your computer closer to your router");
+            		
+            		System.out.println("Are you able to connect with the internet? (yes or no)");
+                	input = keyboard.nextLine();
+                	
+                	if (input.equalsIgnoreCase("yes")) {
+                		System.out.println("Moving your computer closer to your router seemed to work.");
+                	}
+                	else if (input.equalsIgnoreCase("no")) {
+                		System.out.println("Fifth step: contact your ISP.");
+                	}
+                	else {
+                		System.out.println("Invalid entry, please enter \"yes\" or \"no\" only.");
+                		System.out.println("Please close the program and try again.");
+                	}
+            	}
+            	else {
+            		System.out.println("Invalid entry, please enter \"yes\" or \"no\" only.");
+            		System.out.println("Please close the program and try again.");
+            	}
+        	}
+        	else {
+        		System.out.println("Invalid entry, please enter \"yes\" or \"no\" only.");
+        		System.out.println("Please close the program and try again.");
+        	}
+    	}
+    	else { // This code will make it so that validity of user input is limited to "yes" or "no"
+    		System.out.println("Invalid entry, please enter \"yes\" or \"no\" only.");
+    		System.out.println("Please close the program and try again.");
+    	}
+    	
+    }
+}
