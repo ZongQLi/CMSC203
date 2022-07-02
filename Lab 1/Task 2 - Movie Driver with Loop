@@ -1,0 +1,40 @@
+import java.util.Scanner;
+public class MovieDriver
+{
+	public static void main(String[] args)
+	{
+		String choice = "y";
+		do
+		{
+			//Create a new object of type Scanner that reads from the keyboard
+			Scanner keyboard = new Scanner(System.in);
+			// Create a new movie object
+			Movie mov = new Movie();
+			// Prompt user to enter the title of a movie and read line
+			System.out.print("Enter a movie title: ");
+			String title = keyboard.nextLine();
+			// Set the title in the movie object
+			mov.setTitle(title);
+			// Prompt user to enter the movie's rating and read line
+			System.out.print("Enter the movie's rating: ");
+			String rating = keyboard.nextLine();
+			// Set the rating in the movie object
+			mov.setRating(rating);
+			// Prompt user to enter # of tickets sold
+			System.out.print("Enter the number of tickets sold: ");
+			int ticketsSold = keyboard.nextInt();
+			// Set the # of tickets sold in the movie object
+			mov.setSoldTickets(ticketsSold);
+			System.out.println(mov.toString());
+			keyboard.nextLine();
+			// Write loop to read input for multiple movies
+			System.out.println("Do you want yo enter another? (y or n)");
+			choice = keyboard.nextLine();
+		} while(choice.equalsIgnoreCase("y"));
+		if(choice.equalsIgnoreCase("n"))
+			System.out.println("Thank you for using my program. Have a nice day!");
+		else
+			System.out.println("Please only enter y or n to enter another movie. "
+					+ "Exit program to try again.");
+	}
+}
