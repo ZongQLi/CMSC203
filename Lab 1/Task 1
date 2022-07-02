@@ -1,0 +1,28 @@
+import java.util.Scanner;
+public class MovieDriver
+{
+	public static void main(String[] args)
+	{
+		//Create a new object of type Scanner that reads from the keyboard
+		Scanner keyboard = new Scanner(System.in);
+		// Create a new movie object
+		Movie mov = new Movie();
+		// Prompt user to enter the title of a movie and read line
+		System.out.print("Enter a movie title: ");
+		String title = keyboard.nextLine();
+		// Set the title in the movie object
+		mov.setTitle(title);
+		// Prompt user to enter the movie's rating and read line
+		System.out.print("Enter the movie's rating: ");
+		String rating = keyboard.nextLine();
+		// Set the rating in the movie object
+		mov.setRating(rating);
+		// Prompt user to enter # of tickets sold
+		System.out.print("Enter the number of tickets sold: ");
+		int ticketsSold = keyboard.nextInt();
+		// Set the # of tickets sold in the movie object
+		mov.setSoldTickets(ticketsSold);
+		keyboard.close();
+		System.out.println(mov.toString());
+	}
+}
