@@ -1,28 +1,55 @@
+import java.io.*;
 import java.util.Scanner;
 public class RandomNumberGuesser
 {
-	public static void main(String[] args)
+	public static void main(String[] args) throws IOException
 	{
+		// Establish the max # as 100 and the min # as 0
 		final int MAX = 100, MIN = 0;
 		
+		// Declare and initialize variable for user's choice to control loop for playing again
 		String playAgain = "yes";
-
+		
+		// Print the name of the program
 		System.out.println("\tRandom Number Guesser\t");
 		
+		// Do-while loop to allow program to iterate once, and then allows for user
+		// to choose if he/she would like to play again
 		do
 		{
+			// Start out by letting user to guess at a number between 0 and 100
 			System.out.println("Enter a number between 0 and 100");
 			System.out.println("Enter your first guess");
+			// Read user's entry and store it in the nextGuess variable
 			Scanner keyboard = new Scanner(System.in);
 			int nextGuess = keyboard.nextInt();
 			
+			// Declare and initialize the guesser variable of the RNG type provided by the assignment
 			RNG guesser = new RNG();
+			// Call and declare the method from the RNG class to generate a random number
 			int randNum = guesser.rand();
+			// Set the beginning max and min #s to validate user input
+			// (invalid input does not count towards tally of user guesses)
 			int highGuess = MAX, lowGuess = MIN;
-			
+			while(nextGuess > highGuess || nextGuess < lowGuess)
+			{
+				System.out.println("Please enter a number between " + lowGuess +
+						" and " + highGuess);
+				nextGuess = keyboard.nextInt();
+			}
+			// The while loop will iterate as long as the user's guess is not equal to the random #
 			while(nextGuess != randNum)
 			{
+				while(nextGuess > highGuess || nextGuess < lowGuess)
+				{
+					System.out.println("Please enter a number between " + lowGuess +
+							" and " + highGuess);
+					nextGuess = keyboard.nextInt();
+				}
+				// Maintains a tally of the user's # of guesses for this iteration
 				System.out.println("Number of guess is " + guesser.getCount());
+				
+				// Update the max/min accordingly based on the user's guess to narrow the selection
 				if(nextGuess > randNum)
 				{
 					highGuess = nextGuess;
@@ -33,21 +60,26 @@ public class RandomNumberGuesser
 					lowGuess = nextGuess;
 					System.out.println("Your guess is too low!");
 				}
+				// Call the inputValidation method from the this instance of the RNG object
+				// to validate the and narrow the range of guesses
 				guesser.inputValidation(nextGuess, lowGuess, highGuess);
+				// Get the next guess for comparison
 				nextGuess = keyboard.nextInt();
+				keyboard.nextLine();
 			}
-			
+			// This if statement executes when the user's guess equals to the random number
 			if(nextGuess == randNum)
 			{
 				System.out.println("Congratulations, you guessed correctly!");
 			}
 			
-			keyboard.nextLine();
+			// Reset the tally of the user's number of guesses for the next attempt
 			guesser.resetCount();
+			// Ask user if he/she would like to play again
 			System.out.println("Try again? yes or no");
 			playAgain = keyboard.nextLine();
 		}
-		while(playAgain.equalsIgnoreCase("yes"));
+		while(playAgain.equalsIgnoreCase("yes")); // Loop reiterates if user types 'yes'
 		System.out.println("Thank you for playing!");
 	}
 
