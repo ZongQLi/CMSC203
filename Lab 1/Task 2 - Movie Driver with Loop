@@ -28,7 +28,7 @@ public class MovieDriver
 			System.out.println(mov.toString());
 			keyboard.nextLine();
 			// Write loop to read input for multiple movies
-			System.out.println("Do you want yo enter another? (y or n)");
+			System.out.println("Do you want to enter another? (y or n)");
 			choice = keyboard.nextLine();
 		} while(choice.equalsIgnoreCase("y"));
 		if(choice.equalsIgnoreCase("n"))
