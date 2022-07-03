@@ -1,1 +1,54 @@
+import java.util.Scanner;
+public class RandomNumberGuesser
+{
+	public static void main(String[] args)
+	{
+		final int MAX = 100, MIN = 0;
+		
+		String playAgain = "yes";
 
+		System.out.println("\tRandom Number Guesser\t");
+		
+		do
+		{
+			System.out.println("Enter a number between 0 and 100");
+			System.out.println("Enter your first guess");
+			Scanner keyboard = new Scanner(System.in);
+			int nextGuess = keyboard.nextInt();
+			
+			RNG guesser = new RNG();
+			int randNum = guesser.rand();
+			int highGuess = MAX, lowGuess = MIN;
+			
+			while(nextGuess != randNum)
+			{
+				System.out.println("Number of guess is " + guesser.getCount());
+				if(nextGuess > randNum)
+				{
+					highGuess = nextGuess;
+					System.out.println("Your guess is too high!");
+				}
+				else if(nextGuess < randNum)
+				{
+					lowGuess = nextGuess;
+					System.out.println("Your guess is too low!");
+				}
+				guesser.inputValidation(nextGuess, lowGuess, highGuess);
+				nextGuess = keyboard.nextInt();
+			}
+			
+			if(nextGuess == randNum)
+			{
+				System.out.println("Congratulations, you guessed correctly!");
+			}
+			
+			keyboard.nextLine();
+			guesser.resetCount();
+			System.out.println("Try again? yes or no");
+			playAgain = keyboard.nextLine();
+		}
+		while(playAgain.equalsIgnoreCase("yes"));
+		System.out.println("Thank you for playing!");
+	}
+
+}
