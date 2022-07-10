@@ -1,16 +1,3 @@
-/**
- * Class: CMSC203 
- * Instructor: Grigoriy Grinberg 
- * Description: Write methods that encrypt and decrypt String ciphers based on the Caesar and Bellaso Ciphers
- * allows the user to make attempts to guess the randomly generated number.
- * Due: 07/10/2022
- * Platform/compiler: Eclipse Java IDE SE 18
- * I pledge that I have completed the programming assignment independently.
-   I have not copied the code from a student or any source.
-   I have not given my code to any student.
-   Print your Name here: Zong Qiang Li
-*/
-
 public class CryptoManager {
 	
 	private static final char LOWER_BOUND = ' ';
