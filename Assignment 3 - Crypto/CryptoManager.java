@@ -51,6 +51,9 @@ public class CryptoManager {
 			// Add the newly acquired char to the String message
 			message += (char)sub;
 		}
+		// Validate if data is outside range. If it is, return error message.
+		if(stringInBounds(plainText) == false)
+			message = "Error: Characters are outside acceptable range.";
 		return message;
 	}
 	
@@ -83,6 +86,9 @@ public class CryptoManager {
 			// Add the character to the encrypted String
 			message += (char)sub;
 		}
+		// Validate if data is outside range. If it is, return error message.
+		if(stringInBounds(plainText) == false)
+			message = "Error: Characters are outside acceptable range.";
 		return message;
 	}
 	
