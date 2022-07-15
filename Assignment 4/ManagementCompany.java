@@ -6,13 +6,16 @@ public class ManagementCompany()
   private String name;
   private int taxID;
   private final double MAX_PROPERTY = 5;
-  private Property properties;
+  private Property[] properties;
   private final double MGMT_WIDTH = 10;
   private final double MGMT_HEIGHT = 10;
   
   // Constructor
   public ManagementCompany()
   { 
+    name = "";
+    taxID = "";
+    properties = new Property[MAX_PROPERTY];
   }
   
   // Copy Constructor
