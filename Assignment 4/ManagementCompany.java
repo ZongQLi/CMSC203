@@ -4,11 +4,13 @@ import java.util.String;
 public class ManagementCompany()
 {
   private String name;
-  private int taxID;
-  private final double MAX_PROPERTY = 5;
+  private String taxID;
   private Property[] properties;
+  private double mgmFeePer;
+  private final double MAX_PROPERTY = 5;
   private final double MGMT_WIDTH = 10;
   private final double MGMT_HEIGHT = 10;
+  private Plot plot;
   
   // Constructor
   public ManagementCompany()
@@ -16,11 +18,15 @@ public class ManagementCompany()
     name = "";
     taxID = "";
     properties = new Property[MAX_PROPERTY];
+    mgmFeePer = 0.0;
   }
   
   // Copy Constructor
-  public ManagementCompany()
+  public ManagementCompany(String name, String taxID, double mgmFee)
   {
+    this.name = name;
+    this.taxID = taxID;
+    this.mgmFeePer = mgmFee;
   }
   
   // Method addProperty Version 1
