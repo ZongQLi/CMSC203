@@ -53,7 +53,7 @@ public class HolidayBonus
 		{
 			for(int col = 0; col < data[row].length; col++)
 			{
-				if(data[row][col] <== 0)
+				if(data[row][col] <= 0)
 				{
 					array[index] += 0;
 				}
